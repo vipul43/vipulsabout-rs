@@ -29,7 +29,7 @@ audit a:
 	$(CARGO) audit
 
 test t:
-	$(CARGO) nextest run
+	$(CARGO) test --target wasm32-unknown-unknown
 
 build b:
 	$(TRUNK) build

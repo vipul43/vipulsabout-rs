@@ -58,9 +58,11 @@ cargo install wasm-bindgen-cli
 ## Additional Tools
 
 1. Rust
-   a. [cargo-msrv](https://crates.io/crates/cargo-msrv)
-   b. [cargo-nextest](https://nexte.st/book/installing-from-source.html)
-   c. [cargo-audit](https://docs.rs/cargo-audit/latest/cargo_audit/)
-   d. [rustfmt](https://github.com/rust-lang/rustfmt)
-   e. [clippy](https://github.com/rust-lang/rust-clippy)
+
+- [cargo-msrv](https://crates.io/crates/cargo-msrv)
+- [cargo-audit](https://docs.rs/cargo-audit/latest/cargo_audit/)
+- [rustfmt](https://github.com/rust-lang/rustfmt)
+- [clippy](https://github.com/rust-lang/rust-clippy)
+- [wasm-bindgen-test](https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html)
+
 2. [Make](https://www.gnu.org/software/make/)
