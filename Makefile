@@ -1,9 +1,15 @@
 RUSTUP:=$(shell which rustup)
 CARGO:=$(shell which cargo)
+TRUNK:=$(shell which trunk)
 
 setup:
+	curl https://sh.rustup.rs -sSf | sh
 	$(RUSTUP) component add rustfmt --toolchain nightly
 	$(RUSTUP) component add clippy
+	$(CARGO) install cargo-audit
+	$(CARGO) install cargo-nextest --locked
+	$(CARGO) install trunk --locked
+	$(CARGO) install wasm-bindgen-cli
 
 lint-fix lf:
 	$(CARGO) +nightly clippy --fix -Z unstable-options --allow-staged --allow-dirty
@@ -24,21 +30,22 @@ test t:
 	$(CARGO) nextest run
 
 build b:
-	$(CARGO) build
+	$(TRUNK) build
 
 build-prod bp:
-	$(CARGO) build --release
+	$(TRUNK) build --release
 
 run r: build
-	RUST_LOG=debug $(CARGO) watch -x 'run --bin vipulsabout-rs'
+	$(TRUNK) serve
 
 ci c: lint-check fmt-check audit test
 
 debug: ci build
-	RUST_LOG=debug $(CARGO) run --bin vipulsabout-rs
+	$(TRUNK) serve
 
 prod: ci build-prod
-	RUST_LOG=info $(CARGO) run --bin vipulsabout-rs
+	$(TRUNK) serve
 
 clean:
 	$(CARGO) clean
+	$(TRUNK) clean
