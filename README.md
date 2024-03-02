@@ -48,3 +48,13 @@ wasm-pack 0.12.1
 
 1. [Rust](https://www.rust-lang.org)
 2. [Yew](https://yew.rs)
+
+## Tools
+
+1. Rust
+   a. [cargo-msrv](https://crates.io/crates/cargo-msrv)
+   b. [cargo-nextest](https://nexte.st/book/installing-from-source.html)
+   c. [cargo-audit](https://docs.rs/cargo-audit/latest/cargo_audit/)
+   d. [rustfmt](https://github.com/rust-lang/rustfmt)
+   e. [clippy](https://github.com/rust-lang/rust-clippy)
+2. [Make](https://www.gnu.org/software/make/)
