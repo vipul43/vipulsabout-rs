@@ -23,6 +23,8 @@ publish = false
 yew = { version = "0.21.0", features = ["csr"] }
 gloo = "0.11.0"
 yew-router = "0.18.0"
+wasm-logger = "0.2.0"
+log = "0.4.21"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.41"

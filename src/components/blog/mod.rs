@@ -15,6 +15,7 @@ use crate::router::BlogRoute;
 /// Blog component function
 #[function_component(Blog)]
 pub fn blog() -> Html {
+    log::info!("Blog component");
     let navigator = use_navigator().expect("Failed to navigate from blog");
     let onclick_tech = {
         let navigator = navigator.clone();

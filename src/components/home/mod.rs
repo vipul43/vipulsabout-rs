@@ -6,6 +6,7 @@ use crate::router::Route;
 /// Home component function
 #[function_component(Home)]
 pub fn home() -> Html {
+    log::info!("Home component");
     let navigator = use_navigator().expect("Failed to navigate from home");
     let onclick_home = {
         let navigator = navigator.clone();
