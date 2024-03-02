@@ -38,10 +38,16 @@ cargo 1.76.0 (c84b36747 2024-01-18)
 rustup target add wasm32-unknown-unknown
 ```
 
-2. [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+2. [trunk](https://trunkrs.dev)
 
 ```
-wasm-pack 0.12.1
+cargo install --locked trunk
+```
+
+3. [wasm-bindgen-cli](https://rustwasm.github.io/wasm-bindgen/reference/cli.html)
+
+```
+cargo install wasm-bindgen-cli
 ```
 
 ## Technologies
@@ -49,7 +55,7 @@ wasm-pack 0.12.1
 1. [Rust](https://www.rust-lang.org)
 2. [Yew](https://yew.rs)
 
-## Tools
+## Additional Tools
 
 1. Rust
    a. [cargo-msrv](https://crates.io/crates/cargo-msrv)
