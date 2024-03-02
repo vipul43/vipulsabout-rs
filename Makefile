@@ -10,6 +10,8 @@ setup:
 	$(CARGO) install cargo-nextest --locked
 	$(CARGO) install trunk --locked
 	$(CARGO) install wasm-bindgen-cli
+	$(CARGO) add gloo
+	$(CARGO) add yew-router
 
 lint-fix lf:
 	$(CARGO) +nightly clippy --fix -Z unstable-options --allow-staged --allow-dirty
