@@ -1,5 +1,6 @@
 use yew::prelude::*;
 
+/// Not found component function
 #[function_component(BlogNotFound)]
 pub fn blog_not_found() -> Html {
     html! {

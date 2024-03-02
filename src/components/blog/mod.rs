@@ -12,6 +12,7 @@ pub mod not_found;
 
 use crate::router::BlogRoute;
 
+/// Blog component function
 #[function_component(Blog)]
 pub fn blog() -> Html {
     let navigator = use_navigator().expect("Failed to navigate from blog");
@@ -19,10 +20,7 @@ pub fn blog() -> Html {
         let navigator = navigator.clone();
         Callback::from(move |_| navigator.push(&BlogRoute::Tech))
     };
-    let onclick_rust = {
-        let navigator = navigator.clone();
-        Callback::from(move |_| navigator.push(&BlogRoute::Rust))
-    };
+    let onclick_rust = Callback::from(move |_| navigator.push(&BlogRoute::Rust));
 
     html! {
         <div>

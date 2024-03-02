@@ -1,3 +1,5 @@
+//! Main
+
 use vipulsabout_rs::app::App;
 
 fn main() {
