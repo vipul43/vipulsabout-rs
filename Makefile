@@ -31,9 +31,9 @@ audit a:
 # Test
 test t: test-backend test-frontend
 test-backend tb:
-	$(CARGO) test --target wasm32-unknown-unknown --target-dir vipulsabout-frontend/target --manifest-path vipulsabout-frontend/Cargo.toml --package vipulsabout-frontend
-test-frontend tf:
 	$(CARGO) nextest run --target-dir vipulsabout-backend/target --manifest-path vipulsabout-backend/Cargo.toml --package vipulsabout-backend --config-file vipulsabout-backend/.config/nextest.toml
+test-frontend tf:
+	$(CARGO) test --target wasm32-unknown-unknown --target-dir vipulsabout-frontend/target --manifest-path vipulsabout-frontend/Cargo.toml --package vipulsabout-frontend
 
 # Build
 ## Build:debug
