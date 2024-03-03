@@ -28,26 +28,45 @@ fmt-check fc:
 audit a:
 	$(CARGO) audit
 
-test t:
-	$(CARGO) test --target wasm32-unknown-unknown
+# Test
+test t: test-backend test-frontend
+test-backend tb:
+	$(CARGO) test --target wasm32-unknown-unknown --target-dir vipulsabout-frontend/target --manifest-path vipulsabout-frontend/Cargo.toml --package vipulsabout-frontend
+test-frontend tf:
+	$(CARGO) nextest run --target-dir vipulsabout-backend/target --manifest-path vipulsabout-backend/Cargo.toml --package vipulsabout-backend --config-file vipulsabout-backend/.config/nextest.toml
 
-build b:
-	$(TRUNK) build
+# Build
+## Build:debug
+build b: build-backend build-frontend
+build-backend bb:
+	$(CARGO) build --target-dir vipulsabout-backend/target --manifest-path vipulsabout-backend/Cargo.toml --package vipulsabout-backend
+build-frontend bf:
+	$(TRUNK) build --config ./vipulsabout-frontend/Trunk.toml
+## Build:prod
+build-prod bp: build-backend-prod build-frontend-prod
+build-backend-prod bbp:
+	$(CARGO) build --release --target-dir vipulsabout-backend/target --manifest-path vipulsabout-backend/Cargo.toml --package vipulsabout-backend
+build-frontend-prod bfp:
+	$(TRUNK) build --release --config ./vipulsabout-frontend/Trunk.toml
 
-build-prod bp:
-	$(TRUNK) build --release
+# Run
+run r: run-backend run-frontend
+run-backend rb: build-backend
+	RUST_LOG=debug $(CARGO) watch -x 'run --bin vipulsabout-backend --target-dir vipulsabout-backend/target --manifest-path vipulsabout-backend/Cargo.toml --package vipulsabout-backend'
+run-frontend rf: build-frontend
+	$(TRUNK) serve --config ./vipulsabout-frontend/Trunk.toml
 
-run r: build
-	$(TRUNK) serve
-
+# CI
 ci c: lint-check fmt-check audit test
 
 debug: ci build
-	$(TRUNK) serve
+	$(CARGO) run --bin vipulsabout-backend --target-dir vipulsabout-backend/target --manifest-path vipulsabout-backend/Cargo.toml --package vipulsabout-backend
+	$(TRUNK) serve --config ./vipulsabout-frontend/Trunk.toml
 
 prod: ci build-prod
-	$(TRUNK) serve
+	$(CARGO) run --release --bin vipulsabout-backend --target-dir vipulsabout-backend/target --manifest-path vipulsabout-backend/Cargo.toml --package vipulsabout-backend
+	$(TRUNK) serve --config ./vipulsabout-frontend/Trunk.toml
 
 clean:
-	$(CARGO) clean
-	$(TRUNK) clean
+	$(CARGO) clean --target-dir vipulsabout-backend/target --manifest-path vipulsabout-backend/Cargo.toml --package vipulsabout-backend
+	$(TRUNK) clean --config ./vipulsabout-frontend/Trunk.toml

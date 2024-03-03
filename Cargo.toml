@@ -1,30 +1,11 @@
-[package]
-name = "vipulsabout-rs"
-version = "0.1.0"
-edition = "2021"
-authors = ["Vipul <saifunny43@gmail.com>"]
-rust-version = "1.76.0"
-description = "Vipulsabout(personal portfolio website) in rust"
-readme = "README.md"
-repository = "https://github.com/vipul43/vipulsabout-rs"
-license-file = "LICENSE"
-keywords = ["yew", "website", "frontend", "backend", "wasm"]
-categories = [
-    "wasm",
-    "web-programming",
-    "web-programming::http-client",
-    "web-programming::http-server",
-]
-publish = false
+[workspace]
+resolver = "2"
+members = ["vipulsabout-backend", "vipulsabout-frontend", "common"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace.lints.rust]
+missing_docs = "deny"
 
-[dependencies]
-yew = { version = "0.21.0", features = ["csr"] }
-gloo = "0.11.0"
-yew-router = "0.18.0"
-wasm-logger = "0.2.0"
-log = "0.4.21"
-
-[dev-dependencies]
-wasm-bindgen-test = "0.3.41"
+[workspace.lints.clippy]
+unwrap_used = "deny"
+panic = "deny"
+expect_used = "deny"
