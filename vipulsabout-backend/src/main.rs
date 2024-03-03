@@ -1,1 +1,3 @@
+//! Main
+
 fn main() {}
