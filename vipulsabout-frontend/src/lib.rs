@@ -12,6 +12,9 @@ pub mod hooks;
 /// Services module
 pub mod services;
 
+/// Styles module
+pub mod styles;
+
 /// Types module
 pub mod types;
 
