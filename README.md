@@ -64,5 +64,6 @@ cargo install wasm-bindgen-cli
 - [rustfmt](https://github.com/rust-lang/rustfmt)
 - [clippy](https://github.com/rust-lang/rust-clippy)
 - [wasm-bindgen-test](https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html)
+- [cargo-nextest](https://nexte.st)
 
 2. [Make](https://www.gnu.org/software/make/)
